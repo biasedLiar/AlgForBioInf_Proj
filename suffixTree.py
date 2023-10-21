@@ -63,7 +63,7 @@ class TreeNode:
 
     def createSuffixTreeFor(self, value):  
         for i in range(len(value)):
-            self.addAndFollowValue(value[i::-1] + "$")
+            self.addAndFollowValue(value[i:] + "$")
             #print()
 
 

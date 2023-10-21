@@ -11,16 +11,14 @@ class DPTable:
 
     def GASolve(self, string2):
         self.s2 = string2
-        self.table = np.array([[-10000 for i in range(len(string2)+1)] for j in range(len(self.s1)+1)])
-        
+        self.table = np.array([[-10000 for i in range(len(self.s2)+1)] for j in range(len(self.s1)+1)])
         for i in range(len(self.s2)+1):
             self.table[0][i] = 0
         for i in range(1, len(self.s1)+1):
             for j in range(i, len(self.s2)+1):
                 cost = self.cost(self.s1[i-1], self.s2[j-1])
                 prev =  self.table[i-1][j-1]
-                if prev is not True:
-                    self.table[i][j] = prev + cost
+                self.table[i][j] = prev + cost
         return self.table[:,-1]
     
     def getCommonString(self):
@@ -33,9 +31,13 @@ class DPTable:
         return ""
 
 
+
+
     def cost(self, c1, c2):
         if c1 == c2:
             return 1
         return 1 - (1/self.percent)
+
+    
 
 

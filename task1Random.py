@@ -12,7 +12,7 @@ from suffixTree import TreeNode
 a = "TGGAATTCTCGGGTGCCAAGGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG"
 root = TreeNode("")
 nodes = [root]
-root.createSuffixTreeFor(a)
+root.createSuffixTreeFor(a[::-1])
 root.printTree()
 lines = open("s_3_sequence_1M.txt").read().splitlines()
 lineLength = len(lines[1])
@@ -35,7 +35,7 @@ lines=[]
 update = 2
 for i in range(numRandLines):
     myString = ""
-    for jA in range(lineLength):
+    for j in range(lineLength):
         myString += ["A", "C", "G", "T"][random.randint(0, 3)]
     lines.append(myString)
 
@@ -53,5 +53,7 @@ for line in lines:
 
 print(lengthList)
 
-plt.hist(lenList, bins=range(51))
+print("Sequences found: " + str((len(lines)-lengthList[0])))
+
+plt.hist(lenList, bins=range(52))
 plt.show()
